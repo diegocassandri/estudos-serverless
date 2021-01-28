@@ -1,0 +1,23 @@
+service: trigger-dynamo
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  environment:
+    DYNAMODB_TABLE: Heroes
+  iamRoleStatements:
+    - Effect: "Allow"
+
+
+functions:
+  hero-insert:
+    handler: handler.heroesInsert
+    events:
+      - http:
+          path: heroes
+          method: post
+          cors: true
+
