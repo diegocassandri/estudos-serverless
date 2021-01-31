@@ -1,0 +1,7 @@
+sls create test -f hello
+
+docker-compose up -d localstack
+
+docker logs <id do processo docker> -f 
+
+docker compose up --build
